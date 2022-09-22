@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Input from './components/Input';
+// import { ISpeaker } from './scripts/Speaker';
+
+const speak = (speaker) => {
+  speaker.text = 'hello world';
+  window.speechSynthesis.speak(speaker);
+};
 
 function App() {
+  const [speaker, setSpeaker] = useState(null);
+  useEffect(() => {
+    setSpeaker(new SpeechSynthesisUtterance());
+  }, []);
+
+  useEffect(() => {
+    if (speaker !== null) {
+      speak(speaker);
+    }
+  }, [speaker]);
+
+  if (!speaker) return null;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Input
+      placeholder="Input Text Here"
+      css={`
+        width: 80vw;
+      `}
+      color="gray"
+      value="Sample Text"
+    />
   );
 }
 
