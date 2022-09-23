@@ -3,7 +3,7 @@ import Input from './components/Input';
 // import { ISpeaker } from './scripts/Speaker';
 
 const speak = (speaker) => {
-  speaker.text = 'hello world';
+  speaker.text = 'Lorem Ipsum';
   window.speechSynthesis.speak(speaker);
 };
 
@@ -13,21 +13,15 @@ function App() {
     setSpeaker(new SpeechSynthesisUtterance());
   }, []);
 
-  useEffect(() => {
-    if (speaker !== null) {
-      speak(speaker);
-    }
-  }, [speaker]);
-
   if (!speaker) return null;
   return (
     <Input
       placeholder="Input Text Here"
       css={`
+        height: 30px;
         width: 80vw;
       `}
-      color="gray"
-      value="Sample Text"
+      color="white"
     />
   );
 }
