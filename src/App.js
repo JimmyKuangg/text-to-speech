@@ -2,11 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Input from './components/Input';
 // import { ISpeaker } from './scripts/Speaker';
 
-const speak = (speaker) => {
-  speaker.text = 'Lorem Ipsum';
-  window.speechSynthesis.speak(speaker);
-};
-
 function App() {
   const [speaker, setSpeaker] = useState(null);
   useEffect(() => {
