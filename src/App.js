@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Input from './components/Input';
-// import { ISpeaker } from './scripts/Speaker';
+import { Speaker } from './scripts/speaker';
 
 function App() {
   const [speaker, setSpeaker] = useState(null);
   useEffect(() => {
-    setSpeaker(new SpeechSynthesisUtterance());
+    setSpeaker(new Speaker());
   }, []);
 
   if (!speaker) return null;

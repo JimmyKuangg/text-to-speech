@@ -21,8 +21,20 @@ export class Speaker {
     this.speaker = new SpeechSynthesisUtterance();
   }
 
+  changeLanguage(language: string) {
+    this.speaker.lang = language;
+  }
+
   changeMessage(message: string) {
     this.speaker.text = message;
+  }
+
+  changePitch(pitch: number) {
+    this.speaker.pitch = pitch;
+  }
+
+  changeRate(rate: number) {
+    this.speaker.rate = rate;
   }
 
   changeVolume(volume: number) {
