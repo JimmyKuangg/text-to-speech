@@ -5,6 +5,7 @@ import Button from './components/Button';
 
 function App() {
   const [speaker, setSpeaker] = useState(null);
+  const [text, setText] = useState('');
   useEffect(() => {
     setSpeaker(new Speaker());
   }, []);
@@ -13,17 +14,25 @@ function App() {
   return (
     <>
       <Input
+        onChange={(e) => {
+          speaker.changeMessage(e.target.value);
+          setText(e.target.value);
+        }}
         placeholder="Input Text Here"
+        value={text}
         css={`
           height: 30px;
           width: 80vw;
         `}
-        color="white"
       />
       <Button
         onClick={() => {
-          console.log('hello');
+          speaker.speak();
         }}
+        text="Play Voice"
+        css={`
+          color: blue;
+        `}
       />
     </>
   );
