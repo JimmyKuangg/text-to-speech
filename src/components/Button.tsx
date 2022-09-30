@@ -9,6 +9,7 @@ interface IButton {
 
 const StyledButton = styled.button`
   background-color: white;
+  cursor: pointer;
   transition: background 0.25s ease;
   &:hover {
     background-color: lightblue;

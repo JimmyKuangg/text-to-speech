@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Input from './components/Input';
 import { Speaker } from './scripts/speaker';
 import Button from './components/Button';
+import Slider from './components/Slider';
 
 function App() {
   const [speaker, setSpeaker] = useState(null);
   const [text, setText] = useState('');
+  const [volume, setVolume] = useState(0.1);
   useEffect(() => {
     setSpeaker(new Speaker());
   }, []);
@@ -33,6 +35,12 @@ function App() {
         css={`
           color: blue;
         `}
+      />
+      <Slider
+        onInput={(e) => {
+          speaker.changeVolume(e.target.value / 100);
+          setVolume(e.target.value);
+        }}
       />
     </>
   );
