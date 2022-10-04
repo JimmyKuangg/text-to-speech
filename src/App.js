@@ -7,7 +7,7 @@ import Slider from './components/Slider';
 function App() {
   const [speaker, setSpeaker] = useState(null);
   const [text, setText] = useState('');
-  const [volume, setVolume] = useState(0.1);
+  const [volume, setVolume] = useState(50);
   const [rate, setRate] = useState(1);
   useEffect(() => {
     setSpeaker(new Speaker());
@@ -43,12 +43,14 @@ function App() {
           setVolume(e.target.value);
         }}
       />
+      <p>{volume}</p>
       <Slider
         onInput={(e) => {
           speaker.changeRate((e.target.value / 100) * 2);
           setRate(e.target.value);
         }}
       />
+      <p>{rate / 50}</p>
     </>
   );
 }
