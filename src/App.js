@@ -58,8 +58,9 @@ function App() {
       />
       <Slider
         onInput={(e) => {
-          speaker.changePitch((e.target.value / 100) * 2);
+          speaker.changePitch(e.target.value);
           setPitch(e.target.value);
+          console.log(e.target.value);
         }}
         max={'2'}
         step={'0.1'}
