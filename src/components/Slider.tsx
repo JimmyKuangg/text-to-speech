@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 interface ISlider {
@@ -13,13 +13,7 @@ const StyledSlider = styled.input`
   ${(props: Partial<ISlider>) => props.css || ''};
 `;
 
-const Slider: FunctionComponent<ISlider> = ({
-  css,
-  onInput,
-  text,
-  max,
-  step,
-}) => {
+const Slider = ({ css, onInput, text, max, step }: ISlider) => {
   return (
     <>
       <StyledSlider

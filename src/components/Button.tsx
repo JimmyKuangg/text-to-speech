@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 interface IButton {
@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   ${(props: Partial<IButton>) => props.css || ''};
 `;
 
-const Button: FunctionComponent<IButton> = ({ css, onClick, text }) => {
+const Button = ({ css, onClick, text }: IButton) => {
   return (
     <>
       <StyledButton onClick={onClick} css={css}>

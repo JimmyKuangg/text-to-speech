@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 interface IInput {
@@ -12,12 +12,7 @@ const StyledInput = styled.input`
   ${(props: Partial<IInput>) => props.css || ''};
 `;
 
-const Input: FunctionComponent<IInput> = ({
-  placeholder,
-  css,
-  onChange,
-  value,
-}) => {
+const Input = ({ placeholder, css, onChange, value }: IInput) => {
   const [text, setText] = useState('');
   const defaultOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);

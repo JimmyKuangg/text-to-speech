@@ -3,6 +3,19 @@ import Input from './components/Input';
 import { Speaker } from './scripts/speaker';
 import Button from './components/Button';
 import Slider from './components/Slider';
+import CustomSelect from './components/Select';
+
+const getLanguageOptions = () => {
+  const languages = window.speechSynthesis.getVoices();
+  const options = [];
+  for (let language of languages) {
+    options.push({
+      value: language.lang,
+      label: `${language.name} ${language.lang}`,
+    });
+  }
+  return options;
+};
 
 function App() {
   const [speaker, setSpeaker] = useState(null);
@@ -10,9 +23,20 @@ function App() {
   const [volume, setVolume] = useState(0.5);
   const [rate, setRate] = useState(1);
   const [pitch, setPitch] = useState(1);
+  const [language, setLanguage] = useState();
   useEffect(() => {
     setSpeaker(new Speaker());
   }, []);
+
+  useEffect(() => {
+    if (speaker) {
+      speaker.changeLanguage(language);
+    }
+  }, [language]);
+
+  const handleOnChange = (e) => {
+    setLanguage(e.target.value);
+  };
 
   if (!speaker) return null;
   return (
@@ -60,11 +84,15 @@ function App() {
         onInput={(e) => {
           speaker.changePitch(e.target.value);
           setPitch(e.target.value);
-          console.log(e.target.value);
         }}
         max={'2'}
         step={'0.1'}
         text={`Pitch: ${pitch}`}
+      />
+      <CustomSelect
+        onChange={handleOnChange}
+        options={getLanguageOptions()}
+        label={'languages'}
       />
     </>
   );
