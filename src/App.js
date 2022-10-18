@@ -23,7 +23,7 @@ function App() {
   const [volume, setVolume] = useState(0.5);
   const [rate, setRate] = useState(1);
   const [pitch, setPitch] = useState(1);
-  const [language, setLanguage] = useState();
+  const [language, setLanguage] = useState('');
   useEffect(() => {
     setSpeaker(new Speaker());
   }, []);
@@ -92,7 +92,7 @@ function App() {
       <CustomSelect
         onChange={handleOnChange}
         options={getLanguageOptions()}
-        label={'languages'}
+        label={'Languages: '}
       />
     </>
   );
