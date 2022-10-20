@@ -1,31 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Input from './components/Input';
 import { Speaker } from './scripts/speaker';
 import Button from './components/Button';
 import Slider from './components/Slider';
 import CustomSelect from './components/Select';
 
-const getLanguageOptions = () => {
-  const languages = window.speechSynthesis.getVoices();
-  const options = [];
-  for (let language of languages) {
-    options.push({
-      value: language.lang,
-      label: `${language.name} ${language.lang}`,
-    });
-  }
-  return options;
+const setSpeech = () => {
+  return new Promise(function (resolve, reject) {
+    let synth = window.speechSynthesis;
+    let id;
+
+    id = setInterval(() => {
+      if (synth.getVoices().length !== 0) {
+        resolve(synth.getVoices());
+        clearInterval(id);
+      }
+    }, 10);
+  });
 };
 
 function App() {
-  const [speaker, setSpeaker] = useState(null);
+  const isMounted = useRef(false);
+  const [speaker, setSpeaker] = useState(new Speaker());
   const [text, setText] = useState('');
   const [volume, setVolume] = useState(0.5);
   const [rate, setRate] = useState(1);
   const [pitch, setPitch] = useState(1);
   const [language, setLanguage] = useState('');
+  const [options, setOptions] = useState([]);
+
   useEffect(() => {
-    setSpeaker(new Speaker());
+    const speech = setSpeech();
+    speech.then((options) => {
+      const formatted = [];
+      for (let option of options) {
+        formatted.push({
+          value: option.lang,
+          label: `${option.name} ${option.lang}`,
+        });
+      }
+      setOptions(formatted);
+    });
   }, []);
 
   useEffect(() => {
@@ -38,7 +53,7 @@ function App() {
     setLanguage(e.target.value);
   };
 
-  if (!speaker) return null;
+  if (!speaker || options.length === 0) return null;
   return (
     <>
       <Input
@@ -91,7 +106,7 @@ function App() {
       />
       <CustomSelect
         onChange={handleOnChange}
-        options={getLanguageOptions()}
+        options={options}
         label={'Languages: '}
       />
     </>
