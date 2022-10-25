@@ -85,6 +85,7 @@ function App() {
         max={'1'}
         step={'0.01'}
         text={`Volume: ${Math.trunc(volume * 100)}`}
+        defaultValue={'0.5'}
       />
       <Slider
         onInput={(e) => {
@@ -94,6 +95,7 @@ function App() {
         max={'2'}
         step={'0.1'}
         text={`Rate: ${rate}`}
+        defaultValue={'1'}
       />
       <Slider
         onInput={(e) => {
@@ -103,6 +105,7 @@ function App() {
         max={'2'}
         step={'0.1'}
         text={`Pitch: ${pitch}`}
+        defaultValue={'1'}
       />
       <CustomSelect
         onChange={handleOnChange}

@@ -7,13 +7,14 @@ interface ISlider {
   text?: string;
   max?: string;
   step?: string;
+  defaultValue?: string;
 }
 
 const StyledSlider = styled.input`
   ${(props: Partial<ISlider>) => props.css || ''};
 `;
 
-const Slider = ({ css, onInput, text, max, step }: ISlider) => {
+const Slider = ({ css, onInput, text, max, step, defaultValue }: ISlider) => {
   return (
     <>
       <StyledSlider
@@ -22,6 +23,7 @@ const Slider = ({ css, onInput, text, max, step }: ISlider) => {
         css={css}
         max={max}
         step={step}
+        defaultValue={defaultValue}
       />
       <label>{text || 'Slider'}</label>
     </>
