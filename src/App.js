@@ -41,6 +41,7 @@ function App() {
       }
       setOptions(formatted);
     });
+    speaker.changeVolume(0.5);
   }, []);
 
   useEffect(() => {
