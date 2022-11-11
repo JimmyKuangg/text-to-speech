@@ -64,19 +64,12 @@ function App() {
         }}
         placeholder="Input Text Here"
         value={text}
-        css={`
-          height: 30px;
-          width: 80vw;
-        `}
       />
       <Button
         onClick={() => {
           speaker.speak();
         }}
         text="Play Voice"
-        css={`
-          color: blue;
-        `}
       />
       <Slider
         onInput={(e) => {

@@ -9,6 +9,9 @@ interface IInput {
 }
 
 const StyledInput = styled.input`
+  height: 30px;
+  width: 80vw;
+  margin: 10px;
   ${(props: Partial<IInput>) => props.css || ''};
 `;
 

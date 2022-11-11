@@ -10,9 +10,12 @@ interface IButton {
 const StyledButton = styled.button`
   background-color: white;
   cursor: pointer;
-  transition: background 0.25s ease;
+  transition: background 0.5s ease;
+  padding: 10px;
+  margin: 5px;
   &:hover {
     background-color: lightblue;
+    color: blue;
   }
   ${(props: Partial<IButton>) => props.css || ''};
 `;
