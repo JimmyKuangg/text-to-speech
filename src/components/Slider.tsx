@@ -11,6 +11,7 @@ interface ISlider {
 }
 
 const StyledSlider = styled.input`
+  cursor: pointer;
   ${(props: Partial<ISlider>) => props.css || ''};
 `;
 
