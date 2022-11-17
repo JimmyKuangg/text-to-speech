@@ -71,36 +71,38 @@ function App() {
         }}
         text="Play Voice"
       />
-      <Slider
-        onInput={(e) => {
-          speaker.changeVolume(e.target.value);
-          setVolume(e.target.value);
-        }}
-        max={'1'}
-        step={'0.01'}
-        text={`Volume: ${Math.trunc(volume * 100)}`}
-        defaultValue={'0.5'}
-      />
-      <Slider
-        onInput={(e) => {
-          speaker.changeRate(e.target.value);
-          setRate(e.target.value);
-        }}
-        max={'2'}
-        step={'0.1'}
-        text={`Rate: ${rate}`}
-        defaultValue={'1'}
-      />
-      <Slider
-        onInput={(e) => {
-          speaker.changePitch(e.target.value);
-          setPitch(e.target.value);
-        }}
-        max={'2'}
-        step={'0.1'}
-        text={`Pitch: ${pitch}`}
-        defaultValue={'1'}
-      />
+      <div id="sliders">
+        <Slider
+          onInput={(e) => {
+            speaker.changeVolume(e.target.value);
+            setVolume(e.target.value);
+          }}
+          max={'1'}
+          step={'0.01'}
+          text={`Volume: ${Math.trunc(volume * 100)}`}
+          defaultValue={'0.5'}
+        />
+        <Slider
+          onInput={(e) => {
+            speaker.changeRate(e.target.value);
+            setRate(e.target.value);
+          }}
+          max={'2'}
+          step={'0.1'}
+          text={`Rate: ${rate}`}
+          defaultValue={'1'}
+        />
+        <Slider
+          onInput={(e) => {
+            speaker.changePitch(e.target.value);
+            setPitch(e.target.value);
+          }}
+          max={'2'}
+          step={'0.1'}
+          text={`Pitch: ${pitch}`}
+          defaultValue={'1'}
+        />
+      </div>
       <CustomSelect
         onChange={handleOnChange}
         options={options}
