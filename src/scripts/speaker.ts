@@ -41,6 +41,10 @@ export class Speaker {
     this.speaker.volume = volume;
   }
 
+  fullStop() {
+    window.speechSynthesis.cancel();
+  }
+
   speak() {
     window.speechSynthesis.speak(this.speaker);
   }

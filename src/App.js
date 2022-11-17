@@ -73,6 +73,12 @@ function App() {
         }}
         text="Play Voice"
       />
+      <Button
+        onClick={() => {
+          speaker.fullStop();
+        }}
+        text="Hol up"
+      />
       <div id="sliders">
         <Slider
           onInput={(e) => {
