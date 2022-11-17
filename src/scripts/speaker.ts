@@ -46,6 +46,9 @@ export class Speaker {
   }
 
   speak() {
+    if (window.speechSynthesis.speaking) {
+      this.fullStop();
+    }
     window.speechSynthesis.speak(this.speaker);
   }
 }
