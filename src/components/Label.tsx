@@ -7,6 +7,7 @@ interface ILabel {
 }
 
 const StyledLabel = styled.label`
+  font-family: sans-serif;
   ${(props: Partial<ILabel>) => props.css || ''};
 `;
 
