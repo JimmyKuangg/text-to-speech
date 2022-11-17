@@ -12,6 +12,7 @@ interface ISlider {
 
 const StyledSlider = styled.input`
   cursor: pointer;
+  width: 100%;
   ${(props: Partial<ISlider>) => props.css || ''};
 `;
 
@@ -26,7 +27,6 @@ const Slider = ({ css, onInput, text, max, step, defaultValue }: ISlider) => {
         step={step}
         defaultValue={defaultValue}
       />
-      <label>{text || 'Slider'}</label>
     </>
   );
 };

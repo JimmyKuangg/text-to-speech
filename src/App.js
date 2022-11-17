@@ -4,6 +4,8 @@ import { Speaker } from './scripts/speaker';
 import Button from './components/Button';
 import Slider from './components/Slider';
 import CustomSelect from './components/Select';
+import Label from './components/Label';
+import styles from './styles/test.css';
 
 const setSpeech = () => {
   return new Promise(function (resolve, reject) {
@@ -79,9 +81,9 @@ function App() {
           }}
           max={'1'}
           step={'0.01'}
-          text={`Volume: ${Math.trunc(volume * 100)}`}
           defaultValue={'0.5'}
         />
+        <Label text={'Volume'} value={Math.trunc(volume * 100)}></Label>
         <Slider
           onInput={(e) => {
             speaker.changeRate(e.target.value);
@@ -89,9 +91,9 @@ function App() {
           }}
           max={'2'}
           step={'0.1'}
-          text={`Rate: ${rate}`}
           defaultValue={'1'}
         />
+        <Label text={'Rate'} value={rate}></Label>
         <Slider
           onInput={(e) => {
             speaker.changePitch(e.target.value);
@@ -99,15 +101,16 @@ function App() {
           }}
           max={'2'}
           step={'0.1'}
-          text={`Pitch: ${pitch}`}
           defaultValue={'1'}
         />
+        <Label text={'Pitch'} value={pitch}></Label>
       </div>
       <CustomSelect
         onChange={handleOnChange}
         options={options}
         label={'Languages: '}
       />
+      <div id="lorem"></div>
     </>
   );
 }

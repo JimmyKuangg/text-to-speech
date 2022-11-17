@@ -1,4 +1,8 @@
 #sliders {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  border: 3px solid blue;
+  padding: 20px;
 }
