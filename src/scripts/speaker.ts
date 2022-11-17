@@ -21,6 +21,10 @@ export class Speaker {
     this.speaker = new SpeechSynthesisUtterance();
   }
 
+  continue() {
+    window.speechSynthesis.resume();
+  }
+
   changeLanguage(language: string) {
     this.speaker.lang = language;
   }
@@ -45,10 +49,18 @@ export class Speaker {
     window.speechSynthesis.cancel();
   }
 
+  stop() {
+    window.speechSynthesis.pause();
+  }
+
   speak() {
-    if (window.speechSynthesis.speaking) {
+    if (this.speaking()) {
       this.fullStop();
     }
     window.speechSynthesis.speak(this.speaker);
+  }
+
+  speaking() {
+    return window.speechSynthesis.speaking;
   }
 }
