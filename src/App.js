@@ -72,13 +72,8 @@ function App() {
           onClick={() => {
             speaker.speak();
           }}
+          playing={speaker.speaking()}
           text="Play"
-        />
-        <Button
-          onClick={() => {
-            speaker.fullStop();
-          }}
-          text="Stop"
         />
       </div>
       <div id="sliders">

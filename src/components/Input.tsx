@@ -9,6 +9,9 @@ interface IInput {
 }
 
 const StyledInput = styled.input`
+  border-radius: 10px;
+  font-size: 30px;
+  color: black;
   height: 50px;
   margin: 10px;
   width: 80vw;
