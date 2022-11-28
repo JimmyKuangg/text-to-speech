@@ -2,19 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface IButton {
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   css?: string;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   text?: string;
 }
 
 const StyledButton = styled.button`
   background-color: white;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.5s ease;
   padding: 10px;
   margin: 5px;
+  transition: background 0.55s ease;
+  width: 300px;
   &:hover {
-    background-color: lightblue;
+    background-color: #c7d1cd;
     color: blue;
   }
   ${(props: Partial<IButton>) => props.css || ''};

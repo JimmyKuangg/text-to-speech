@@ -4,7 +4,6 @@ import styled from 'styled-components';
 interface ISlider {
   onInput: (e: React.MouseEvent<HTMLInputElement>) => void;
   css?: string;
-  text?: string;
   max?: string;
   step?: string;
   defaultValue?: string;
@@ -16,9 +15,9 @@ const StyledSlider = styled.input`
   ${(props: Partial<ISlider>) => props.css || ''};
 `;
 
-const Slider = ({ css, onInput, text, max, step, defaultValue }: ISlider) => {
+const Slider = ({ css, onInput, max, step, defaultValue }: ISlider) => {
   return (
-    <>
+    <div id="slider">
       <StyledSlider
         type="range"
         onInput={onInput}
@@ -27,7 +26,7 @@ const Slider = ({ css, onInput, text, max, step, defaultValue }: ISlider) => {
         step={step}
         defaultValue={defaultValue}
       />
-    </>
+    </div>
   );
 };
 

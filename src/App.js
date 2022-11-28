@@ -59,26 +59,28 @@ function App() {
   if (!speaker || options.length === 0) return null;
   return (
     <>
-      <Input
-        onChange={(e) => {
-          speaker.changeMessage(e.target.value);
-          setText(e.target.value);
-        }}
-        placeholder="Input Text Here"
-        value={text}
-      />
-      <Button
-        onClick={() => {
-          speaker.speak();
-        }}
-        text="Play Voice"
-      />
-      <Button
-        onClick={() => {
-          speaker.fullStop();
-        }}
-        text="Hol up"
-      />
+      <div id="text">
+        <Input
+          onChange={(e) => {
+            speaker.changeMessage(e.target.value);
+            setText(e.target.value);
+          }}
+          placeholder="Input Text Here"
+          value={text}
+        />
+        <Button
+          onClick={() => {
+            speaker.speak();
+          }}
+          text="Play"
+        />
+        <Button
+          onClick={() => {
+            speaker.fullStop();
+          }}
+          text="Stop"
+        />
+      </div>
       <div id="sliders">
         <Slider
           onInput={(e) => {

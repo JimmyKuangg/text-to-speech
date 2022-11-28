@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 interface IInput {
-  placeholder?: string;
   css?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
   value?: string;
 }
 
 const StyledInput = styled.input`
-  height: 30px;
-  width: 80vw;
+  height: 50px;
   margin: 10px;
+  width: 80vw;
   ${(props: Partial<IInput>) => props.css || ''};
 `;
 

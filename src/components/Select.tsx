@@ -7,10 +7,10 @@ interface IOption {
 }
 
 interface ISelect {
+  css?: string;
+  label: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => {};
   options: IOption[];
-  label: string;
-  css?: string;
 }
 
 const StyledSelect = styled.select`
