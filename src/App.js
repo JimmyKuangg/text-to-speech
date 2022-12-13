@@ -23,6 +23,7 @@ const setSpeech = () => {
 
 function App() {
   const isMounted = useRef(false);
+  const [speaking, setSpeaking] = useState(false);
   const [speaker, setSpeaker] = useState(new Speaker());
   const [text, setText] = useState('');
   const [volume, setVolume] = useState(0.5);
@@ -70,10 +71,15 @@ function App() {
         />
         <Button
           onClick={() => {
-            speaker.speak();
+            if (!speaking) {
+              speaker.speak();
+              setSpeaking(true);
+            } else {
+              speaker.fullStop();
+              setSpeaking(false);
+            }
           }}
-          playing={speaker.speaking()}
-          text="Play"
+          text={speaking ? 'Stop' : 'Play'}
         />
       </div>
       <div id="sliders">

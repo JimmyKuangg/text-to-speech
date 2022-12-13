@@ -4,7 +4,6 @@ import styled from 'styled-components';
 interface IButton {
   css?: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  playing: boolean;
   text?: string;
 }
 
@@ -23,10 +22,7 @@ const StyledButton = styled.button`
   ${(props: Partial<IButton>) => props.css || ''};
 `;
 
-const Button = ({ css, onClick, playing, text }: IButton) => {
-  {
-    console.log(playing);
-  }
+const Button = ({ css, onClick, text }: IButton) => {
   return (
     <>
       <StyledButton onClick={onClick} css={css}>
