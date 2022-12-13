@@ -17,8 +17,11 @@ export interface ISpeaker {
 export class Speaker {
   speaker: any;
 
-  constructor() {
+  constructor(setSpeaking: any) {
     this.speaker = new SpeechSynthesisUtterance();
+    this.speaker.onend = () => {
+      setSpeaking(false);
+    };
   }
 
   continue() {
@@ -54,13 +57,6 @@ export class Speaker {
   }
 
   speak() {
-    if (this.speaking()) {
-      this.fullStop();
-    }
     window.speechSynthesis.speak(this.speaker);
-  }
-
-  speaking() {
-    return window.speechSynthesis.speaking;
   }
 }

@@ -24,7 +24,7 @@ const setSpeech = () => {
 function App() {
   const isMounted = useRef(false);
   const [speaking, setSpeaking] = useState(false);
-  const [speaker, setSpeaker] = useState(new Speaker());
+  const [speaker, setSpeaker] = useState(new Speaker(setSpeaking));
   const [text, setText] = useState('');
   const [volume, setVolume] = useState(0.5);
   const [rate, setRate] = useState(1);
@@ -76,7 +76,6 @@ function App() {
               setSpeaking(true);
             } else {
               speaker.fullStop();
-              setSpeaking(false);
             }
           }}
           text={speaking ? 'Stop' : 'Play'}
