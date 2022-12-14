@@ -5,7 +5,6 @@ import Button from './components/Button';
 import Slider from './components/Slider';
 import CustomSelect from './components/Select';
 import Label from './components/Label';
-import styles from './styles/test.css';
 
 const setSpeech = () => {
   return new Promise(function (resolve, reject) {
@@ -22,7 +21,7 @@ const setSpeech = () => {
 };
 
 function App() {
-  const isMounted = useRef(false);
+  // const isMounted = useRef(false);
   const [speaking, setSpeaking] = useState(false);
   const [speaker, setSpeaker] = useState(new Speaker(setSpeaking));
   const [text, setText] = useState('');
