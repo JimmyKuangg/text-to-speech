@@ -19,7 +19,7 @@ const StyledSelect = styled.select`
 
 const CustomSelect = ({ options, label, onChange, css }: ISelect) => {
   return (
-    <>
+    <div id="languages">
       <label>{label}</label>
 
       <StyledSelect
@@ -33,7 +33,7 @@ const CustomSelect = ({ options, label, onChange, css }: ISelect) => {
           </option>
         ))}
       </StyledSelect>
-    </>
+    </div>
   );
 };
 

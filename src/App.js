@@ -59,66 +59,68 @@ function App() {
   if (!speaker || options.length === 0) return null;
   return (
     <>
-      <div id="text">
-        <Input
-          onChange={(e) => {
-            speaker.changeMessage(e.target.value);
-            setText(e.target.value);
-          }}
-          placeholder="Input Text Here"
-          value={text}
-        />
-        <Button
-          onClick={() => {
-            if (text.length > 0) {
-              if (!speaking) {
-                speaker.speak();
-                setSpeaking(true);
-              } else {
-                speaker.fullStop();
+      <div id="tts">
+        <div id="text">
+          <Input
+            onChange={(e) => {
+              speaker.changeMessage(e.target.value);
+              setText(e.target.value);
+            }}
+            placeholder="Input Text Here"
+            value={text}
+          />
+          <Button
+            onClick={() => {
+              if (text.length > 0) {
+                if (!speaking) {
+                  speaker.speak();
+                  setSpeaking(true);
+                } else {
+                  speaker.fullStop();
+                }
               }
-            }
-          }}
-          text={speaking ? 'Stop' : 'Play'}
+            }}
+            text={speaking ? 'Stop' : 'Play'}
+          />
+        </div>
+        <div id="sliders">
+          <Slider
+            onInput={(e) => {
+              speaker.changeVolume(e.target.value);
+              setVolume(e.target.value);
+            }}
+            max={'1'}
+            step={'0.01'}
+            defaultValue={'0.5'}
+          />
+          <Label text={'Volume'} value={Math.trunc(volume * 100)}></Label>
+          <Slider
+            onInput={(e) => {
+              speaker.changeRate(e.target.value);
+              setRate(e.target.value);
+            }}
+            max={'2'}
+            step={'0.1'}
+            defaultValue={'1'}
+          />
+          <Label text={'Rate'} value={rate}></Label>
+          <Slider
+            onInput={(e) => {
+              speaker.changePitch(e.target.value);
+              setPitch(e.target.value);
+            }}
+            max={'2'}
+            step={'0.1'}
+            defaultValue={'1'}
+          />
+          <Label text={'Pitch'} value={pitch}></Label>
+        </div>
+        <CustomSelect
+          onChange={handleOnChange}
+          options={options}
+          label={'Languages: '}
         />
       </div>
-      <div id="sliders">
-        <Slider
-          onInput={(e) => {
-            speaker.changeVolume(e.target.value);
-            setVolume(e.target.value);
-          }}
-          max={'1'}
-          step={'0.01'}
-          defaultValue={'0.5'}
-        />
-        <Label text={'Volume'} value={Math.trunc(volume * 100)}></Label>
-        <Slider
-          onInput={(e) => {
-            speaker.changeRate(e.target.value);
-            setRate(e.target.value);
-          }}
-          max={'2'}
-          step={'0.1'}
-          defaultValue={'1'}
-        />
-        <Label text={'Rate'} value={rate}></Label>
-        <Slider
-          onInput={(e) => {
-            speaker.changePitch(e.target.value);
-            setPitch(e.target.value);
-          }}
-          max={'2'}
-          step={'0.1'}
-          defaultValue={'1'}
-        />
-        <Label text={'Pitch'} value={pitch}></Label>
-      </div>
-      <CustomSelect
-        onChange={handleOnChange}
-        options={options}
-        label={'Languages: '}
-      />
       <div id="lorem">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
