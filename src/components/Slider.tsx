@@ -17,7 +17,7 @@ const StyledSlider = styled.input`
 
 const Slider = ({ css, onInput, max, step, defaultValue }: ISlider) => {
   return (
-    <div id="slider">
+    <div>
       <StyledSlider
         type="range"
         onInput={onInput}

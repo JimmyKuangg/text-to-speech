@@ -84,36 +84,42 @@ function App() {
           />
         </div>
         <div id="sliders">
-          <Slider
-            onInput={(e) => {
-              speaker.changeVolume(e.target.value);
-              setVolume(e.target.value);
-            }}
-            max={'1'}
-            step={'0.01'}
-            defaultValue={'0.5'}
-          />
-          <Label text={'Volume'} value={Math.trunc(volume * 100)}></Label>
-          <Slider
-            onInput={(e) => {
-              speaker.changeRate(e.target.value);
-              setRate(e.target.value);
-            }}
-            max={'2'}
-            step={'0.1'}
-            defaultValue={'1'}
-          />
-          <Label text={'Rate'} value={rate}></Label>
-          <Slider
-            onInput={(e) => {
-              speaker.changePitch(e.target.value);
-              setPitch(e.target.value);
-            }}
-            max={'2'}
-            step={'0.1'}
-            defaultValue={'1'}
-          />
-          <Label text={'Pitch'} value={pitch}></Label>
+          <div id="slider">
+            <Slider
+              onInput={(e) => {
+                speaker.changeVolume(e.target.value);
+                setVolume(e.target.value);
+              }}
+              max={'1'}
+              step={'0.01'}
+              defaultValue={'0.5'}
+            />
+            <Label text={'Volume'} value={Math.trunc(volume * 100)}></Label>
+          </div>
+          <div id="slider">
+            <Slider
+              onInput={(e) => {
+                speaker.changeRate(e.target.value);
+                setRate(e.target.value);
+              }}
+              max={'2'}
+              step={'0.1'}
+              defaultValue={'1'}
+            />
+            <Label text={'Rate'} value={rate}></Label>
+          </div>
+          <div id="slider">
+            <Slider
+              onInput={(e) => {
+                speaker.changePitch(e.target.value);
+                setPitch(e.target.value);
+              }}
+              max={'2'}
+              step={'0.1'}
+              defaultValue={'1'}
+            />
+            <Label text={'Pitch'} value={pitch}></Label>
+          </div>
         </div>
         <CustomSelect
           onChange={handleOnChange}
