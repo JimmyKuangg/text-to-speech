@@ -59,4 +59,8 @@ export class Speaker {
   speak() {
     window.speechSynthesis.speak(this.speaker);
   }
+
+  speaking() {
+    return window.speechSynthesis.speaking;
+  }
 }

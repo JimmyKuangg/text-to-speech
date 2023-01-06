@@ -15,6 +15,7 @@ const StyledButton = styled.button`
   margin: 5px;
   transition: background 0.55s ease;
   width: 200px;
+  font-size: 20px;
   &:hover {
     background-color: #c7d1cd;
     color: blue;

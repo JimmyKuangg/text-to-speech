@@ -5,6 +5,7 @@ import Button from './components/Button';
 import Slider from './components/Slider';
 import CustomSelect from './components/Select';
 import Label from './components/Label';
+import Text from './components/Text';
 
 const setSpeech = () => {
   return new Promise(function (resolve, reject) {
@@ -52,6 +53,23 @@ function App() {
     }
   }, [language]);
 
+  useEffect(() => {
+    const speakSelected = () => {
+      const selected = window.getSelection().toString();
+      if (selected.length) {
+        speaker.changeMessage(selected);
+        speaker.speak();
+        setSpeaking(true);
+      }
+    };
+
+    window.addEventListener('mouseup', speakSelected);
+
+    return () => {
+      window.removeEventListener('mouseup', speakSelected);
+    };
+  }, []);
+
   const handleOnChange = (e) => {
     setLanguage(e.target.value);
   };
@@ -59,6 +77,7 @@ function App() {
   if (!speaker || options.length === 0) return null;
   return (
     <>
+      <Text text={'Hello!'} />
       <div id="tts">
         <div id="text">
           <Input
@@ -71,13 +90,11 @@ function App() {
           />
           <Button
             onClick={() => {
-              if (text.length > 0) {
-                if (!speaking) {
-                  speaker.speak();
-                  setSpeaking(true);
-                } else {
-                  speaker.fullStop();
-                }
+              if (!speaker.speaking()) {
+                speaker.speak();
+                setSpeaking(true);
+              } else {
+                speaker.fullStop();
               }
             }}
             text={speaking ? 'Stop' : 'Play'}
@@ -127,15 +144,11 @@ function App() {
           label={'Languages: '}
         />
       </div>
-      <div id="lorem">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum
-      </div>
+      <Text
+        text={
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laboru'
+        }
+      />
     </>
   );
 }
