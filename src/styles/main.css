@@ -9,6 +9,11 @@
   cursor: pointer;
 }
 
+#languages {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
 #lorem {
   padding: 20px;
 }
@@ -22,7 +27,6 @@
 }
 
 #slider {
-  border: 3px solid red;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,8 +37,7 @@
 #sliders {
   display: flex;
   justify-content: space-evenly;
-  border: 3px solid blue;
-  padding: 15px;
+  margin-top: -30px;
   min-width: 900px;
 }
 

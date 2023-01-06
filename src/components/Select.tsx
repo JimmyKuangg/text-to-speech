@@ -14,6 +14,12 @@ interface ISelect {
 }
 
 const StyledSelect = styled.select`
+  height: 30px;
+  background: #ffffff;
+  color: black;
+  padding-left: 5px;
+  font-size: 14px;
+  margin-left: 10px;
   ${(props: Partial<ISelect>) => props.css || ''};
 `;
 
