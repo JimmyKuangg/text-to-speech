@@ -56,7 +56,7 @@ function App() {
   useEffect(() => {
     const speakSelected = () => {
       const selected = window.getSelection().toString();
-      if (selected.length) {
+      if (selected.length && !speaker.speaking()) {
         speaker.changeMessage(selected);
         speaker.speak();
         setSpeaking(true);
@@ -90,7 +90,8 @@ function App() {
           />
           <Button
             onClick={() => {
-              if (!speaker.speaking()) {
+              if (!speaker.speaking() && text.length !== 0) {
+                speaker.changeMessage(text);
                 speaker.speak();
                 setSpeaking(true);
               } else {
@@ -145,9 +146,17 @@ function App() {
         />
       </div>
       <Text
-        text={
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laboru'
-        }
+        text={`Lorem ipsum dolor sit amet, 
+          consectetur adipiscing elit, 
+          sed do eiusmod tempor incididunt ut 
+          labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, 
+          quis nostrud exercitation ullamco 
+          laboris nisi ut aliquip ex ea commodo consequat. 
+          Duis aute irure dolor in reprehenderit 
+          in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, 
+          sunt in culpa qui officia deserunt mollit anim id est laboru`}
       />
     </>
   );
