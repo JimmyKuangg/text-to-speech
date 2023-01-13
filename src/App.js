@@ -78,6 +78,15 @@ function App() {
   return (
     <>
       <Text text={'Hello!'} />
+      <Text
+        text={`Type some text into the chat box
+        and press the play button 
+        to hear it spoken aloud!`}
+      />
+      <Text
+        text={`Or try highlighting something by clicking and 
+        dragging your mouse through some text on the screen!`}
+      />
       <div id="tts">
         <div id="text">
           <Input

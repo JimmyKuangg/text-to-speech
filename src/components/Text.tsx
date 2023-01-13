@@ -5,8 +5,9 @@ interface IText {
   text: string;
 }
 
-const StyledText = styled.p`
-  padding: 10px;
+const StyledText = styled.span`
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 20px;
   font-family: sans-serif;
   ${(props: Partial<IText>) => props.css || ''};
